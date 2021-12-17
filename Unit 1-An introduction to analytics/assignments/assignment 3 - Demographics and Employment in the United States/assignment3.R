@@ -31,6 +31,20 @@ table(is.na(CPS$MetroArea))
 sort(table(CPS$MetroArea))
 
 sort(tapply(CPS$Hispanic, CPS$MetroArea, mean))
-sort(tapply(CPS$Race =="American Indian", CPS$MetroArea, mean))
-table(CPS$Race)
-table(CPS$Education)
+
+sort(tapply(CPS$Race == "Asian", CPS$MetroArea, mean))
+sort(tapply(CPS$Education == "No high school diploma", CPS$MetroArea, mean, na.rm = TRUE))
+
+CPS = merge(CPS, CountryMap, by.x = "CountryOfBirthCode", by.y = "Code", all.x = TRUE)
+str(CPS)
+table(is.na(CPS$Country))
+sort(table(CPS$Country))
+sort(tapply(CPS$Country != "United States", CPS$MetroArea, mean, na.rm = TRUE))
+(table(CPS$MetroArea, CPS$Country == "Somalia"))
+
+sort(tapply(CPS$Country == "India", CPS$MetroArea, sum, na.rm = TRUE))
+sort(tapply(CPS$Country == "Brazil", CPS$MetroArea, sum, na.rm = TRUE))
+sort(tapply(CPS$Country == "Somalia", CPS$MetroArea, sum, na.rm = TRUE))
+
+
+
